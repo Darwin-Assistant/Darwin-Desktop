@@ -1,0 +1,17 @@
+{
+  "name": "darwin-desktop",
+  "version": "1.0.0",
+  "main": "src/main.js",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.21.4",
+    "dotenv": "^10.0.0",
+    "ibm-watson": "^6.2.1",
+    "node-record-lpcm16": "^1.0.1",
+    "watson-speech": "^0.39.0",
+    "ws": "^8.2.2"
+  },
+  "devDependencies": {
+    "electron": "^15.0.0"
+  }
+}
