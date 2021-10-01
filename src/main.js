@@ -39,6 +39,12 @@ const createWindow = () => {
   });
   ipcMain.handle("window:close", () => win.close());
   ipcMain.handle("window:minimize", () => win.minimize());
+  ipcMain.handle("send:message", (event, message) => {
+    DarwinClient.sendMessage(message);
+  });
+  DarwinClient.on("message", (m) => {
+    win.webContents.send("message", m);
+  });
 };
 
 app.whenReady().then(createWindow);

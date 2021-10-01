@@ -7,7 +7,10 @@
     <script src="./min/recorder.js"></script>
     <script src="./renderer.js"></script>
     <link rel="stylesheet" href="./index.css" />
-    <link href="https://fonts.googleapis.com/css?family=Roboto:100,100italic,300,300italic,regular,italic,500,500italic,700,700italic,900,900italic" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto:100,100italic,300,300italic,regular,italic,500,500italic,700,700italic,900,900italic"
+      rel="stylesheet"
+    />
   </head>
   <body>
     <div class="container">
@@ -27,18 +30,33 @@
           </div>
         </div>
       </div>
+      <div class="loader-linear" id="loader">
+        <div class="indeterminate"></div>
+      </div>
       <div class="welcome-content" id="welcome-content">
         <div class="welcome-title">
           <h1>Hi! What can I do for you?</h1>
         </div>
-
       </div>
-    <div class="options-content" id="options">
-      <div class="option">Hi</div>
-      <div class="option">Launch Fortnite</div>
-    </div>
-    <form id="input-msg">
-      <input class="text-input" placeholder="What can I do for you?"></input>
+      <div class="message-holder" id="message-holder"></div>
+      <div class="options-content" id="options">
+        <div class="option" onclick="optionHandler(this)" data-option="hi">
+          Hi
+        </div>
+        <div
+          class="option"
+          onclick="optionHandler(this)"
+          data-option="launch fornite"
+        >
+          Launch Fortnite
+        </div>
+      </div>
+      <form id="input-msg">
+        <input
+          class="text-input"
+          id="text-input"
+          placeholder="What can I do for you?"
+        />
       </form>
     </div>
     <audio id="assistant-sounds"></audio>
