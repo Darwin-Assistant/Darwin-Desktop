@@ -15,6 +15,9 @@
   <body>
     <div class="container">
       <div class="titlebar">
+        <div id="settings-gear" style="padding: 10px;">
+          <img src="./assets/settings.svg" />
+        </div>
         <div class="electron-drag"></div>
         <div class="window-controls">
           <div id="min-btn">
@@ -46,7 +49,7 @@
         <div
           class="option"
           onclick="optionHandler(this)"
-          data-option="launch fornite"
+          data-option="launch fortnite"
         >
           Launch Fortnite
         </div>
@@ -58,7 +61,12 @@
           placeholder="What can I do for you?"
         />
       </form>
+      <div class="mic-icon" id="mic" onclick="record()">
+        <img src="./assets/Google_mic.svg" height="35px" width="35px" />
+      </div>
+      <div class="settings-panel"></div>
     </div>
+
     <audio id="assistant-sounds"></audio>
   </body>
 </html>
