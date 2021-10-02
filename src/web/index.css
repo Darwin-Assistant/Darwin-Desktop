@@ -111,11 +111,11 @@ body {
 }
 .message-holder {
   margin-top: 40px;
-  overflow: visible;
 }
 .message-content {
   padding: 10px;
-
+  overflow-y: auto;
+  height:  200px;
   min-width: 59px;
   text-align: left;
   border-radius: 15px;
@@ -123,6 +123,12 @@ body {
   width: fit-content;
   transition: all 0.2s ease-in-out;
   animation: floatin 1s ease-in-out;
+}
+.mic-icon {
+  position: absolute;
+  bottom: 10px;
+  right: 20px;
+  cursor: pointer;
 }
 .loader-linear {
   overflow: hidden;
