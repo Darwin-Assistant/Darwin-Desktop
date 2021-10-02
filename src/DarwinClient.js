@@ -1,6 +1,7 @@
 const ws = require("ws");
 const { EventEmitter } = require("events");
 const axios = require("axios");
+const open = require("open");
 module.exports = class DarwinClient extends EventEmitter {
   constructor(url = "ws://localhost:3500/gateway") {
     super();
@@ -23,6 +24,8 @@ module.exports = class DarwinClient extends EventEmitter {
         case "message.regular":
           this.emit("message", data.body);
           break;
+        case "app.start":
+          open("kek", { app: "google chrome" });
       }
     });
     this.ws.on("close", () => {
