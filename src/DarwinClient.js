@@ -3,15 +3,20 @@ const { EventEmitter } = require("events");
 const axios = require("axios");
 const open = require("open");
 module.exports = class DarwinClient extends EventEmitter {
-  constructor(url = "ws://localhost:3500/gateway") {
+  constructor(host = "localhost:3500", secureProtocol = false) {
     super();
-    this.ws = new ws(url, {
-      headers: {
-        Authorization: "password",
-        platform: "windows",
-        name: "Windows-Main",
-      },
-    });
+    this.host = host;
+    this.restUrl = `${secureProtocol ? "https" : "http"}://${host}/api`;
+    this.ws = new ws(
+      (secureProtocol ? "wss://" : "ws://") + host + "/gateway",
+      {
+        headers: {
+          Authorization: "password",
+          platform: "windows",
+          name: "Windows-Main",
+        },
+      }
+    );
     this.ws.on("message", (msg) => {
       const data = JSON.parse(msg);
       switch (data.intent) {
@@ -37,7 +42,7 @@ module.exports = class DarwinClient extends EventEmitter {
   sendMessage(msg) {
     axios({
       method: "post",
-      url: "http://localhost:3500/api/actions/create",
+      url: this.restUrl + "/actions/create",
       headers: {
         authorization: "password",
         "device-id": this.deviceID,
