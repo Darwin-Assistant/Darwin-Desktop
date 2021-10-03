@@ -36,6 +36,15 @@ const createWindow = () => {
   win.loadFile(__dirname + "/web" + "/index.html");
   ipcMain.handle("recognize", async (event, audio) => {
     const result = await recognize(audio);
+    if (!result.result.results[0])
+      return win.webContents.send("message", {
+        say: null,
+        content: "Sorry, I don't know what to say",
+      });
+
+    DarwinClient.sendMessage(
+      result.result.results[0].alternatives[0].transcript
+    );
   });
   ipcMain.handle("window:close", () => win.close());
   ipcMain.handle("window:minimize", () => win.minimize());
@@ -50,5 +59,6 @@ const createWindow = () => {
 app.whenReady().then(createWindow);
 app.on("window-all-closed", () => {
   app.quit();
+  ipcMain.removeAllListeners();
 });
 process.on("uncaughtException", () => {});

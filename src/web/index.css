@@ -115,7 +115,7 @@ body {
 .message-content {
   padding: 10px;
   overflow-y: auto;
-  height:  200px;
+  height: 200px;
   min-width: 59px;
   text-align: left;
   border-radius: 15px;
@@ -157,6 +157,42 @@ body {
   height: 100%;
   background-color: #4fc3f7;
   animation: indeterminate_second 1.5s infinite ease-in;
+}
+#settings-gear {
+  cursor: pointer;
+}
+#settings-panel {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #121212;
+  border-radius: 25px;
+  border-top: #03a9f4 solid 5px;
+  z-index: 100;
+  visibility: visible;
+  transition: transform 1s ease-in-out;
+  /*transform: translateY(100%);*/
+}
+#close-settings-btn {
+  margin: 20px;
+  stroke: #707070;
+  cursor: pointer;
+}
+#close-settings-btn:hover {
+  stroke: white;
+}
+.settings-rows {
+  display: grid;
+  grid-auto-flow: row;
+  margin: 10px;
+  padding: 50px;
+}
+.settings-rows {
+  width: auto;
+  height: 30px;
+  background-color: #ffbfbf;
 }
 @keyframes floatin {
   0% {

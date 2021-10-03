@@ -15,7 +15,7 @@
   <body>
     <div class="container">
       <div class="titlebar">
-        <div id="settings-gear" style="padding: 10px;">
+        <div id="settings-gear" style="padding: 10px">
           <img src="./assets/settings.svg" />
         </div>
         <div class="electron-drag"></div>
@@ -64,7 +64,17 @@
       <div class="mic-icon" id="mic" onclick="record()">
         <img src="./assets/Google_mic.svg" height="35px" width="35px" />
       </div>
-      <div class="settings-panel"></div>
+      <div id="settings-panel">
+        <div id="close-settings-btn">
+          <svg viewBox="0 0 100 100" height="24px" width="24px">
+            <line x1="0" y1="0" y2="100" x2="100" style="stroke-width: 5" />
+            <line x1="100" y1="0" y2="100" x2="0" style="stroke-width: 5" />
+          </svg>
+        </div>
+        <div class="settings-rows">
+          <div class="settings-row"></div>
+        </div>
+      </div>
     </div>
 
     <audio id="assistant-sounds"></audio>
