@@ -3,7 +3,11 @@ const { EventEmitter } = require("events");
 const axios = require("axios");
 const open = require("open");
 module.exports = class DarwinClient extends EventEmitter {
-  constructor(host = "localhost:3500", secureProtocol = false) {
+  constructor(
+    host = "localhost:3500",
+    password = "password",
+    secureProtocol = false
+  ) {
     super();
     this.host = host;
     this.restUrl = `${secureProtocol ? "https" : "http"}://${host}/api`;
@@ -11,7 +15,7 @@ module.exports = class DarwinClient extends EventEmitter {
       (secureProtocol ? "wss://" : "ws://") + host + "/gateway",
       {
         headers: {
-          Authorization: "password",
+          Authorization: password,
           platform: "windows",
           name: "Windows-Main",
         },
@@ -38,6 +42,9 @@ module.exports = class DarwinClient extends EventEmitter {
       this.emit("close");
       this.ready = false;
     });
+  }
+  destroy() {
+    this.ws.close();
   }
   sendMessage(msg) {
     axios({

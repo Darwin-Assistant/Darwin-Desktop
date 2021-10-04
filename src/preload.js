@@ -1,5 +1,15 @@
 const { ipcRenderer, contextBridge } = require("electron");
-
+contextBridge.exposeInMainWorld("saveSettings", () => {
+  const settings = {
+    pwd: document.getElementById("pwd").value,
+    host: document.getElementById("host").value,
+  };
+  ipcRenderer.invoke("saveSettings", settings);
+});
+ipcRenderer.on("settings", (event, settings) => {
+  if (settings.pwd) document.getElementById("pwd").value = settings.pwd;
+  if (settings.host) document.getElementById("host").value = settings.host;
+});
 const mediaStreamConstraints = {
   audio: true,
   video: false,
